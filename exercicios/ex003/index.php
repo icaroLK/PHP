@@ -10,6 +10,7 @@
 <h1>Tipos primitivos</h1>
 
     <?php 
+    
         $num = 0x1A;
         echo "O valor é $num";
         
