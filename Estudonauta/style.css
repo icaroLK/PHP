@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.11);
+}
+
+main {
+    margin: auto;
+    max-width: 800px;
+    background-color: fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.473);
+}
+
+main > h1 {
+    text-align: center;
+    padding: 10px;
+}
+
+table.lista {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+table.lista tr {
+    height: 50px;
+}
+
+table.lista td {
+    /* border: 1px solid black; */
+    padding: 10px;
+}
+
+table.lista tr:nth-child(even) {
+    background-color: f2f2f2;
+}
+
+table.lista td:nth-child(1) {
+    width: 50px;
+}
+
+table.lista td:nth-child(3) {
+    width: 90px;
+}
