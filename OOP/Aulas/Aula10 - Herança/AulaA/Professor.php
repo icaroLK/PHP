@@ -13,7 +13,7 @@ Class Professor extends Pessoa {
     //—————————— CONSTRUCT ——————————\\
     public function __construct(){
 
-    }
+    } 
 
 
 

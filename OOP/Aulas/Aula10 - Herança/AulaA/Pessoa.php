@@ -1,6 +1,6 @@
 <?php
 
-Class Pessoa {
+abstract Class Pessoa {
 
     //—————————— ATRIBUTES ——————————\\
     private string $nome;
@@ -11,13 +11,13 @@ Class Pessoa {
 
     //—————————— CONSTRUCT ——————————\\
     public function __construct(){
-
+ 
     }
 
 
 
     //—————————— METHODS ——————————\\
-    public function fazerAniv(){
+    public final function fazerAniv(){
         $this->setIdade($this->getIdade() + 1);
     }
 

@@ -4,7 +4,7 @@ require_once 'Pessoa.php';
 Class Aluno extends Pessoa{
 
     //—————————— ATRIBUTES ——————————\\
-    private bool $matr;
+    private bool $matricula;
     private string $curso;
 
 
@@ -17,8 +17,13 @@ Class Aluno extends Pessoa{
 
 
     //—————————— METHODS ——————————\\
-    public function cancelarMatr(){
-        $this->setMatr(false);
+    public function cancelarMatricula(){
+        $this->setMatricula(false);
+    }
+
+
+    public function pagarMensalidade(){
+        echo "<p>Pagando mensalidade do aluno {$this->getNome()}</p>";
     }
 
 
@@ -30,11 +35,11 @@ Class Aluno extends Pessoa{
 
 
     //—————————— MATR ——————————\\
-    public function getMatr(){
-        return $this->matr;
+    public function getMatricula(){
+        return $this->matricula;
     }
-    public function setMatr($var){
-        $this->matr = $var;
+    public function setMatricula($var){
+        $this->matricula = $var;
     }
 
 
