@@ -38,10 +38,6 @@ class Luta {
 
     
     
-    
-    
-    
-    
     public function getDesafiante() {
         return $this->desafiante;
     }
