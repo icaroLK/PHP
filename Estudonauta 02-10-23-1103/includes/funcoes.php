@@ -31,3 +31,8 @@ function msg_erro($m){
 
 }
 
+function logout(){
+    unset($_SESSION['user']);
+    unset($_SESSION['nome']);
+    unset($_SESSION['tipo']);
+}

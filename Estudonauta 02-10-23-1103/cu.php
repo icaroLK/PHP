@@ -4,33 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games catalog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="estilos/stilo.css">
 </head>
 <body>
     <?php 
         require_once "includes/banco.php";
         require_once "includes/funcoes.php";
-        require_once "includes/login.php";
-        require_once "topo.php";
+        include_once "topo.php";
     ?>
     
 
     <main>
         <h1>Escolha seu jogo</h1>
-     
 
-
-        <?php
-        $filtro = $_GET['filtro']?? 'nome';
-        $chave = $_GET['pesquisa']?? '';
-        ?>
-
-
-
-
-
-        <div class="barra">
+        <!-- <div class="barra">
             <a href="index.php?filtro=nome&pesquisa=<?=$chave?>">Nome</a>
             <a href="index.php?filtro=produtora&pesquisa=<?=$chave?>">Produtora</a>
             <a href="index.php?filtro=nota Desc&pesquisa=<?=$chave?>">Nota Alta</a>
@@ -39,18 +26,40 @@
         </div>
 
 
-
+        <form action="index.php" method="get" class="pesquisa">
+                <input type="text" name="pesquisa" id="ipesquisa" size="10" maxlength="40">
+                <input type="submit" value="Buscar">
+        </form> -->
 
 
 
         <?php  
+
+echo "<div class=\"barra\">";
+        
+echo "
+    <a href='index.php?filtro=nome'>Nome</a> |
+    <a href='index.php?filtro=produtora'>Produtora</a> |
+    <a href='index.php?filtro=nota Desc'>Nota Alta</a> |
+    <a href='index.php?filtro=nota'>Nota Baixa</a> |
+    <a href='index.php?filtro=todos'>Mostrar todos</a> | Busca: ";   
+ 
+            $filtro = $_GET['filtro']?? 'nome';
+            $chave = $_GET['pesquisa']?? '';
+
+
+
+
             $sel = "select * from jogos AS j
             INNER JOIN produtoras AS p on j.id_prod = p.id_prod
             INNER JOIN generos AS g on j.id_genero = g.id_genero";
 
+
+
             if(!empty ($chave)){
                 $sel .= " WHERE nome like \"%$chave%\" or produtora like \"%$chave%\" or nota like \"%$chave%\" or genero like \"%$chave%\"";
             };
+
 
             switch($filtro){
                 case 'todos':
@@ -73,18 +82,36 @@
 
             $totSQL = $banco->query("$sel");
             $qtdGeral = $totSQL->num_rows; 
+
+
+
+            echo "<form action=\"index.php\" method=\"get\" class=\"pesquisa\">";
+            echo '<input type="text" name="pesquisa" id="ipesquisa" size="10" maxlength="40">';
+            echo '<input type="submit" value="Pesquisar">';
+            echo "</form>";
+        
+            echo "</div>";
+
         ?>
 
+            
+        
 
 
 
 
 
-        <form action="index.php" method="get" class="pesquisa">
-                <input type="text" name="pesquisa" id="ipesquisa" size="10" maxlength="40">
-                <input type="submit" value="Buscar">
-        </form> 
-    
+
+
+
+
+
+        <!-- <form action="index.php" method="get" class="pesquisa">
+            Busca: 
+            <input type="text" name="busca" id="ibusca" size="10" maxlength="40">
+            <input type="submit" value="Pesquisar">
+        </form> -->
+
         <table class="lista">
             <?php 
 
@@ -97,23 +124,14 @@
                         echo "<td><a href='detalhes.php?cod=$objAtual->id_jogo'>$objAtual->nome</a>
                         <br>";
                         echo "<small>$objAtual->genero  ". " - " ."    $objAtual->produtora</small></td>";
+                        // $sel = $banco->query("Select g.genero, p.produtora FROM jogos AS j
+                        // INNER JOIN produtoras AS p
+                        // INNER JOIN generos AS g
+                        // ON j.id_genero = g.id_genero AND j.id_prod = p.id_prod
+                        // AND j.id_jogo = $objAtual->id_jogo
+                        // ORDER BY j.nome")->fetch_object();
 
-                        if(is_adm()){
-                            echo "<td>";
-                                echo "<abbr title='Adicionar'><span class='material-symbols-outlined'>add_circle</span></abbr>";
-                                echo "  ";
-                                echo "<abbr title='Editar'><span class='material-symbols-outlined'>edit_square</span></abbr>";
-                                echo "  ";
-                                echo "<abbr title='Excluir'><span class='material-symbols-outlined'>delete</span></abbr>";
-                            echo "</td>";
-                        } else if(is_editor()){
-                            echo "<td>";
-                                echo "<abbr title='Editar'><span class='material-symbols-outlined'>edit_square</span></abbr>";
-                            echo "</td>";
-                        };
-
-
-                        // echo "<td>ADM</td>";
+                        echo "<td>ADM</td>";
                     echo "</tr>";
                 }
             ?>

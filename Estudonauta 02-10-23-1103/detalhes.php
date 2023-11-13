@@ -32,33 +32,9 @@
             <table class="detalhes">
                 <?php 
                     $t = thumb($objAtual->capa);
-                    echo "<tr>";
-                        echo "<td rowspan='3'> <img src='$t' class='full'/></td>";
-                        echo "<td><h2>$objAtual->nome</h2></td>";
-                    echo "</tr>";
-                    echo "<tr>";
-                        echo "<td>Nota: $objAtual->nota / 10";
-                    
-
-                    if(is_adm()){
-                        
-                        // echo "<td>";
-                            echo '<br>';
-                            echo '<br>';
-                            echo "<abbr title='Adicionar'><span class='material-symbols-outlined'>add_circle</span></abbr>";
-                            echo "  ";
-                            echo "<abbr title='Editar'><span class='material-symbols-outlined'>edit_square</span></abbr>";
-                            echo "  ";
-                            echo "<abbr title='Excluir'><span class='material-symbols-outlined'>delete</span></abbr>";
-                        echo "</td>";
-                    } else if(is_editor()){
-                            echo '<br>';
-                            echo '<br>';
-                            echo "<abbr title='Editar'><span class='material-symbols-outlined'>edit_square</span></abbr>";
-                        echo "</td>";
-                    };
-
-                    echo "</tr>";
+                    echo "<tr><td rowspan='3'> <img src='$t' class='full'/></td>";
+                    echo "<td><h2>$objAtual->nome</h2></td>";
+                    echo "<td>Nota: $objAtual->nota / 10</td>";
                     echo "<tr><td>$objAtual->descricao</td>";
                     echo "<tr><td>$objAtual->produtora</td>";
 

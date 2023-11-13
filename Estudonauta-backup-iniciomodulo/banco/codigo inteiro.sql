@@ -41,23 +41,20 @@ FOREIGN KEY (id_prod) REFERENCES produtoras(id_prod)
 
 DESCRIBE jogos;
 
-DELETE FROM generos;
+
 INSERT INTO generos (id_genero, genero) VALUES
 (1, 'Ação'),
 (2, 'Aventura'),
 (3, 'Terror'),
-(4, 'Estratégia'),
-(5, 'RPG'),
-(6, 'Esporte'),
-(7, 'Corrida'),
-(8, 'Tabuleiro'),
-(9, 'Puzzle'),
-(10, 'Luta'),
-(11, 'Musical');
+(5, 'Estratégia'),
+(6, 'RPG'),
+(7, 'Esporte'),
+(8, 'Corrida'),
+(9, 'Tabuleiro'),
+(10, 'Puzzle'),
+(11, 'Luta'),
+(12, 'Musical');
 
-UPDATE generos SET id_genero = 5 WHERE id_genero = 6;
-
-SELECT * FROM generos;
 
 
 INSERT INTO produtoras (id_prod, produtora, pais) VALUES
@@ -77,18 +74,7 @@ INSERT INTO produtoras (id_prod, produtora, pais) VALUES
 (14, 'Capcom', 'Japão');
 
 
-SELECT g.genero, p.produtora FROM jogos AS j
-INNER JOIN produtoras AS p
-INNER JOIN generos AS g
-ON j.id_genero = g.id_genero AND j.id_prod = p.id_prod
-AND j.id_jogo = 6
-ORDER BY j.nome;
 
-SELECT * FROM jogos WHERE id_jogo = 6;
-
-
-Select * FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero AND id_jogo = 5;
 
 INSERT INTO jogos (id_jogo, nome, id_genero, id_prod, descricao, nota, capa) VALUES
 (1, 'Mario Odissey', 2, 3, 'Em Super Mario Odyssey, o jogador joga como Mario em suas aventuras por terras além do Reino dos Cogumelos com o auxílio de um novo personagem introduzido no jogo, o Cappy. Esse \"chapéu vivo\" garante um novo acréscimo à dificuldade e a dinâmica já vista nos jogos anteriores, pois além de ser uma forma de ataque além do seu tradicional pulo, ele dá também a habilidade de \"capturar\" os carismáticos inimigos da série e alguns objetos. A nova mecânica funciona da seguinte maneira: ao chacoalhar os Joy-Cons ou apertar um simples botão, Cappy é arremessado e volta para a cabeça de Mario automaticamente, apenas se não encostar em algo que ele possa interagir. Há também vários outros simples movimentos com os Joy-Cons que fazem o chapéu rodear o cenário de maneiras diferentes, sendo útil de várias maneiras, como por exemplo a possibilidade de coletar moedas eliminar inimigos ao seu redor com mais rapidez. As mecânicas já vistas anteriormente como o \"Ground Pound\" e o \"Wall Jump\" também estão presentes no game.', '9.50', 'mario.png'),
@@ -104,58 +90,20 @@ INSERT INTO jogos (id_jogo, nome, id_genero, id_prod, descricao, nota, capa) VAL
 (11, 'Assassins Creed III', 1, 10, 'Assassins Creed III é um jogo de ação-aventura produzido pela Ubisoft e publicado pela Ubisoft durante os meses de Outubro e Novembro de 2012 para Wii U, Xbox 360, PlayStation 3 e Microsoft Windows . É o quinto jogo principal da série Assassins Creed e o seu terceiro título numerado. Assassins Creed III é a continuação direta de Assassins Creed: Revelations de 2011.\r\n\r\nO enredo decorre de uma história fictícia dentro de eventos reais e segue a batalha ancestral entre os Assassinos, que lutam pela liberdade, e os Templários, que desejam controlar a humanidade. A trama se desenrola no século XXI onde Desmond Miles, o protagonista da série, com a ajuda de uma máquina conhecida como Animus, revive as memórias dos seus ancestrais para o ajudar a descobrir uma maneira de prevenir o Apocalipse de 2012. A história principal se desenrola antes, durante e depois da Revolução Americana entre 1765 e 1783 e segue o ancestral de Desmond, de ascendência mohawk e inglesa, Ratonhnhaké:ton,também conhecido como Connor, enquanto ele luta contra as tentativas dos Templários de controlar a nova nação.', '7.50', 'assassin.png');
 
 
-SELECT jogos.nome FROM jogos ORDER BY jogos.nome;
-select p.produtora FROM produtoras AS p, jogos AS j WHERE j.id_prod = p.id_prod
-ORDER BY j.nome;
+SELECT * FROM jogos;
 
 
 SELECT j.nome, j.nota, p.produtora, g.genero FROM jogos as j
 INNER JOIN produtoras AS p ON p.id_prod = j.id_prod
-INNER JOIN generos AS g ON j.id_genero = g.id_genero 
-ORDER BY j.nome;
+INNER JOIN generos AS g ON j.id_genero = g.id_genero
+;
 
 
-SELECT j.nome, p.produtora, g.genero FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero
-ORDER BY j.nome;
-
-Select p.produtora FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero ORDER BY j.nome;
-
-Select count(*) AS qtd FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero ORDER BY j.nome;
-
-
-Select * FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero ORDER BY j.nome;
 
 INSERT INTO usuarios (id_usuario, nome, senha, tipo) VALUES
 (1, 'Ícaro Lima', '$2y$10$UpMQCcir.v649HrdLvUXiOC/ftU7xWhSxm8QhX.VzSe9LZHhvW/Ty', 'admin'),
 (2, 'João da Silva', '$2y$10$w7on7cjLKNtmJUGkiHIXoOQAwTJzkgxXqLmjtfDUkCXmQK0784.IS', 'editor');
 
 
-Select nome FROM jogos WHERE id_jogo = 1;
 
 
-Select * FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero AND id_jogo = 6;
-
-Select * FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero ORDER BY nota;
-
-Select * FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero 
-AND j.nome = 'God of War'
-ORDER BY nome;
-
-Select * FROM jogos AS j, produtoras AS p, generos AS g 
-WHERE j.id_prod = p.id_prod AND j.id_genero = g.id_genero 
-and (nome like "%god%" or p.produtora = '%Fony%');
-
-
-select * from jogos AS j
-INNER JOIN produtoras AS p on j.id_prod = p.id_prod
-INNER JOIN generos AS g on j.id_genero = g.id_genero 
-;
-
-select * from jogos;

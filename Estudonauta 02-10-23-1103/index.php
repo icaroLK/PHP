@@ -97,23 +97,14 @@
                         echo "<td><a href='detalhes.php?cod=$objAtual->id_jogo'>$objAtual->nome</a>
                         <br>";
                         echo "<small>$objAtual->genero  ". " - " ."    $objAtual->produtora</small></td>";
+                        // $sel = $banco->query("Select g.genero, p.produtora FROM jogos AS j
+                        // INNER JOIN produtoras AS p
+                        // INNER JOIN generos AS g
+                        // ON j.id_genero = g.id_genero AND j.id_prod = p.id_prod
+                        // AND j.id_jogo = $objAtual->id_jogo
+                        // ORDER BY j.nome")->fetch_object();
 
-                        if(is_adm()){
-                            echo "<td>";
-                                echo "<abbr title='Adicionar'><span class='material-symbols-outlined'>add_circle</span></abbr>";
-                                echo "  ";
-                                echo "<abbr title='Editar'><span class='material-symbols-outlined'>edit_square</span></abbr>";
-                                echo "  ";
-                                echo "<abbr title='Excluir'><span class='material-symbols-outlined'>delete</span></abbr>";
-                            echo "</td>";
-                        } else if(is_editor()){
-                            echo "<td>";
-                                echo "<abbr title='Editar'><span class='material-symbols-outlined'>edit_square</span></abbr>";
-                            echo "</td>";
-                        };
-
-
-                        // echo "<td>ADM</td>";
+                        echo "<td>ADM</td>";
                     echo "</tr>";
                 }
             ?>
